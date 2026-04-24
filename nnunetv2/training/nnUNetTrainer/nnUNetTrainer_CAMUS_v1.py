@@ -47,7 +47,7 @@ class nnUNetTrainer_CAMUS_v1(nnUNetTrainer):
         self.initial_lr = 3e-3
         self.weight_decay = 3e-5
         self.oversample_foreground_percent = 0.50
-        self.num_epochs = 500
+        self.num_epochs = 50
 
     def configure_rotation_dummyDA_mirroring_and_inital_patch_size(self):
         rotation_for_DA, do_dummy_2d_data_aug, initial_patch_size, mirror_axes = (
