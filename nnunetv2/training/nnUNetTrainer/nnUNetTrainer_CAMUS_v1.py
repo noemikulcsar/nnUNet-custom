@@ -25,14 +25,7 @@ from nnunetv2.training.nnUNetTrainer.nnUNetTrainer import nnUNetTrainer
 
 
 class nnUNetTrainer_CAMUS_v1(nnUNetTrainer):
-    """
-    Trainer custom pentru CAMUS.
-    Modificări conservative:
-    - learning rate mai stabil
-    - foreground oversampling mai mare
-    - rotații mai moderate pentru ecografie cardiacă
-    - augmentări intensity adaptate ultrasound
-    """
+
 
     def __init__(
         self,
@@ -54,7 +47,6 @@ class nnUNetTrainer_CAMUS_v1(nnUNetTrainer):
             super().configure_rotation_dummyDA_mirroring_and_inital_patch_size()
         )
 
-        # CAMUS este ecografie cardiacă 2D. Rotațiile de 180° pot fi prea agresive.
         if len(self.configuration_manager.patch_size) == 2:
             rotation_for_DA = (-30.0 / 360 * 2.0 * np.pi, 30.0 / 360 * 2.0 * np.pi)
             mirror_axes = (0, 1)
