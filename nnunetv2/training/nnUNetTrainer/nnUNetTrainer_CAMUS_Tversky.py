@@ -8,7 +8,7 @@ from nnunetv2.training.loss.compound_losses_CAMUS import (
 
 from nnunetv2.training.loss.dice import MemoryEfficientSoftDiceLoss
 import torch
-import numpy
+import numpy as np
 
 class nnUNetTrainer_CAMUS_Tversky(nnUNetTrainer_CAMUS_CBAM_v2):
 
