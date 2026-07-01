@@ -39,6 +39,8 @@ class MemoryEfficientSoftTverskyLoss(nn.Module):
 
     def forward(self, x, y, loss_mask=None):
 
+        raise RuntimeError("RUNNING CAMUS_LOSSES_V2")
+
         if self.apply_nonlin is not None:
             x = self.apply_nonlin(x)
 
