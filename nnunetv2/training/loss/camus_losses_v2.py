@@ -71,7 +71,6 @@ class MemoryEfficientSoftTverskyLoss(nn.Module):
 
         if not self.do_bg:
             x = x[:, 1:].contiguous()
-            y_onehot = y_onehot[:, 1:].contiguous()
             print("x final:", x.shape)
             print("y_onehot final:", y_onehot.shape)
 
