@@ -23,8 +23,8 @@ class MemoryEfficientSoftTverskyLoss(nn.Module):
         do_bg: bool = True,
         smooth: float = 1.0,
         ddp: bool = True,
-        alpha: float = 0.7,
-        beta: float = 0.3,
+        alpha: float = 0.6,
+        beta: float = 0.4,
     ):
         super().__init__()
 
