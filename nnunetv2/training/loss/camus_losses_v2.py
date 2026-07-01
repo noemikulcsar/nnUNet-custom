@@ -39,7 +39,10 @@ class MemoryEfficientSoftTverskyLoss(nn.Module):
 
     def forward(self, x, y, loss_mask=None):
 
-        raise RuntimeError("RUNNING CAMUS_LOSSES_V2")
+        print("\n===== TVERSKY =====")
+        print("x initial:", x.shape)
+        print("y initial:", y.shape)
+        print("do_bg:", self.do_bg)
 
         if self.apply_nonlin is not None:
             x = self.apply_nonlin(x)
@@ -61,6 +64,7 @@ class MemoryEfficientSoftTverskyLoss(nn.Module):
                 )
 
                 y_onehot.scatter_(1, y.long(), 1)
+                print("y_onehot:", y_onehot.shape)
 
             if not self.do_bg:
                 y_onehot = y_onehot[:, 1:]
@@ -68,6 +72,8 @@ class MemoryEfficientSoftTverskyLoss(nn.Module):
         if not self.do_bg:
             x = x[:, 1:].contiguous()
             y_onehot = y_onehot[:, 1:].contiguous()
+            print("x final:", x.shape)
+            print("y_onehot final:", y_onehot.shape)
 
         if loss_mask is None:
 
