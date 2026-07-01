@@ -47,16 +47,17 @@ class nnUNetTrainer_CAMUS_Tversky(nnUNetTrainer_CAMUS_CBAM_v2):
 
             deep_supervision_scales = self._get_deep_supervision_scales()
 
-            weights = np.array(
-                [1 / (2 ** i) for i in range(len(deep_supervision_scales))]
-            )
+            weights = np.array([
+                1.0,
+                0.5,
+                0.2,
+                0.1,
+                0.0
+            ])
 
-            if self.is_ddp and not self._do_i_compile():
-                weights[-1] = 1e-6
-            else:
-                weights[-1] = 0
+            weights = weights[:len(deep_supervision_scales)]
 
-            weights = weights / weights.sum()
+            weights /= weights.sum()
 
             from nnunetv2.training.loss.deep_supervision import (
                 DeepSupervisionWrapper,
