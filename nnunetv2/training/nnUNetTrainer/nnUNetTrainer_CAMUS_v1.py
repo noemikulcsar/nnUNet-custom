@@ -37,9 +37,9 @@ class nnUNetTrainer_CAMUS_v1(nnUNetTrainer):
     ):
         super().__init__(plans, configuration, fold, dataset_json, device)
 
-        self.initial_lr = 1e-5
+        self.initial_lr = 3e-3
         self.weight_decay = 3e-5
-        self.oversample_foreground_percent = 0.33
+        self.oversample_foreground_percent = 0.50
         self.num_epochs = 50
 
     def configure_rotation_dummyDA_mirroring_and_inital_patch_size(self):
